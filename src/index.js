@@ -1,4 +1,5 @@
 import { program } from "commander";
+import * as contactsService from "./contacts.js";
 program
   .option("-a, --action <type>", "choose action")
   .option("-i, --id <type>", "user id")
@@ -11,22 +12,26 @@ program.parse();
 const options = program.opts();
 
 // TODO: рефакторити
-async function invokeAction({ action, id, name, email, phone }) {
+async function invokeAction({ action, id, ...data }) {
   switch (action) {
     case "list":
-      // ...
+      const listContacts = await contactsService.listContacts();
+      console.log(listContacts);
       break;
 
     case "get":
-      // ... id
+      const getContacts = await contactsService.getContactById(id);
+      console.log(getContacts);
       break;
 
     case "add":
-      // ... name email phone
+      const newContact = await contactsService.addContact(data);
+      console.log(newContact);
       break;
 
     case "remove":
-      // ... id
+      const removedContact = await contactsService.removeContact(id);
+      console.log(removedContact);
       break;
 
     default:

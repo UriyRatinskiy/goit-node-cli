@@ -1,14 +1,22 @@
 {
   "name": "src",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "author": "UriyRatinskiy <YOUR_EMAIL>",
   "license": "ISC",
   "dependencies": {
-    "commander": "^12.0.0"
+    "commander": "^12.0.0",
+    "fs.promises": "^0.1.2",
+    "nanoid": "^5.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
   }
 }
